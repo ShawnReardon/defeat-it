@@ -1,0 +1,12 @@
+{
+    "/+^(wt-#": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4AAAAADQ0A7gAOANAA0ODuAAcA7Xfu7e5w19hw1+4AAHDe3e3tDQAA4N7Y4Nfn7u4ADgDtfuft7gAHANAA0ADuAAAAAA0NAO4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "sddrdsdfdg"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
