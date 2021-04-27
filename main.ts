@@ -4,8 +4,9 @@ namespace SpriteKind {
     export const iop = SpriteKind.create()
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    knives += -1
     if (knives > 0) {
+        knives += -1
+        statusbar.value = knives
         mySprite3 = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -26,6 +27,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             `, SpriteKind.etu)
         mySprite3.setPosition(mySprite.x, mySprite.y)
         mySprite3.setVelocity(0, 100)
+    } else {
+        music.buzzer.play()
     }
 })
 info.player4.onLifeZero(function () {
@@ -46,6 +49,7 @@ sprites.onOverlap(SpriteKind.etu, SpriteKind.Enemy, function (sprite, otherSprit
     info.player3.changeLifeBy(-1)
 })
 let mySprite3: Sprite = null
+let statusbar: StatusBarSprite = null
 let knives = 0
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
@@ -196,6 +200,9 @@ mySprite.setBounceOnWall(true)
 let mySprite2 = sprites.create(assets.image`sddrdsdfdg`, SpriteKind.Enemy)
 mySprite.setPosition(75, 8)
 knives = 10
+statusbar = statusbars.create(48, 12, StatusBarKind.Magic)
+statusbar.max = knives
+statusbar.positionDirection(CollisionDirection.Bottom)
 game.onUpdateInterval(2000, function () {
     mySprite3 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -217,4 +224,13 @@ game.onUpdateInterval(2000, function () {
         `, SpriteKind.iop)
     mySprite3.setPosition(mySprite2.x, mySprite2.y)
     mySprite3.setVelocity(0, -100)
+})
+forever(function () {
+    if (knives == 0) {
+        knives = -1
+        timer.after(1500, function () {
+            knives = 10
+            statusbar.value = knives
+        })
+    }
 })
